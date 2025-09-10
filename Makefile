@@ -5,6 +5,20 @@ SUBLEVEL = 160
 EXTRAVERSION =
 NAME = Dare mighty things
 
+# Use Custom Toolchain
+CLANG_PATH := ../../../prebuilts/clang/host/linux-x86/clang-r536225
+CROSS_COMPILE_AARCH64_PATH := ../../../prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-
+CROSS_COMPILE_ARM32_PATH := ../../../prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
+
+# Set the build toolchain
+CC := $(CLANG_PATH)/bin/clang
+CROSS_COMPILE := $(CROSS_COMPILE_AARCH64_PATH)
+CROSS_COMPILE_ARM32 := $(CROSS_COMPILE_ARM32_PATH)
+
+# Enable LLVM/Clang
+LLVM := 1
+LLVM_IAS := 1
+
 # indicate that change "Kbuild: Support nested composite objects" is
 # present in the kernel so that out-of-tree modules can act upon it
 export KERNEL_SUPPORTS_NESTED_COMPOSITES := y
